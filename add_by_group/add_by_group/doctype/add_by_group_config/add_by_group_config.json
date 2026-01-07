@@ -1,0 +1,232 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-07 09:04:28.502726",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_setup",
+  "title",
+  "enabled",
+  "parent_doctype",
+  "parent_child_field",
+  "child_doctype",
+  "column_break_members",
+  "member_doctype",
+  "member_group_field",
+  "group_doctype",
+  "allow_descendants_by_default",
+  "member_name_field",
+  "member_uom_field",
+  "member_filters_json",
+  "member_extra_fields_json",
+  "section_child",
+  "child_member_field",
+  "child_qty_field",
+  "default_qty",
+  "merge_keys",
+  "child_field_map",
+  "parent_requirements_json",
+  "page_length",
+  "hook_path",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_setup",
+   "fieldtype": "Section Break",
+   "label": "Setup"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Label",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "parent_doctype",
+   "fieldtype": "Link",
+   "label": "Parent DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "description": "Child table fieldname on the parent (e.g., items).",
+   "fieldname": "parent_child_field",
+   "fieldtype": "Data",
+   "label": "Parent Child Table Fieldname",
+   "reqd": 1
+  },
+  {
+   "fieldname": "child_doctype",
+   "fieldtype": "Link",
+   "label": "Child Table DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_members",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member_doctype",
+   "fieldtype": "Link",
+   "label": "Member DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "description": "Field on the member that points to the group (e.g., item_group).",
+   "fieldname": "member_group_field",
+   "fieldtype": "Data",
+   "label": "Member -> Group Field",
+   "reqd": 1
+  },
+  {
+   "fieldname": "group_doctype",
+   "fieldtype": "Link",
+   "label": "Group DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_descendants_by_default",
+   "fieldtype": "Check",
+   "label": "Include Descendants by Default"
+  },
+  {
+   "description": "Optional: friendly name field on the member (e.g., item_name).",
+   "fieldname": "member_name_field",
+   "fieldtype": "Data",
+   "label": "Member Name Field"
+  },
+  {
+   "description": "Optional: UOM/Unit field on the member (e.g., stock_uom).",
+   "fieldname": "member_uom_field",
+   "fieldtype": "Data",
+   "label": "Member UOM Field"
+  },
+  {
+   "description": "JSON filters for members, e.g., {\"disabled\":0,\"is_stock_item\":1}.",
+   "fieldname": "member_filters_json",
+   "fieldtype": "Code",
+   "label": "Member Filters (JSON)",
+   "options": "JSON"
+  },
+  {
+   "description": "Optional list of extra member fields to show (JSON array of fieldnames or objects).",
+   "fieldname": "member_extra_fields_json",
+   "fieldtype": "Code",
+   "label": "Member Extra Fields (JSON)",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "section_child",
+   "fieldtype": "Section Break",
+   "label": "Child Mapping"
+  },
+  {
+   "description": "Field on the child that points to the member (e.g., item_code).",
+   "fieldname": "child_member_field",
+   "fieldtype": "Data",
+   "label": "Child -> Member Field",
+   "reqd": 1
+  },
+  {
+   "description": "Qty/Amount fieldname on the child row (e.g., qty, amount).",
+   "fieldname": "child_qty_field",
+   "fieldtype": "Data",
+   "label": "Child Qty/Amount Field",
+   "reqd": 1
+  },
+  {
+   "default": "1.0",
+   "description": "Default qty/amount to prefill on each prepopulated row.",
+   "fieldname": "default_qty",
+   "fieldtype": "Float",
+   "label": "Default Qty/Amount"
+  },
+  {
+   "fieldname": "merge_keys",
+   "fieldtype": "Table",
+   "label": "Merge Key Fields",
+   "options": "Add By Group Merge Key"
+  },
+  {
+   "description": "Optional child fields (e.g., warehouse, cost_center) to expose in the UI.",
+   "fieldname": "child_field_map",
+   "fieldtype": "Table",
+   "label": "Child Field Map",
+   "options": "Add By Group Child Field"
+  },
+  {
+   "description": "JSON array of parent fields required before apply (e.g., [\"company\",\"set_warehouse\"]).",
+   "fieldname": "parent_requirements_json",
+   "fieldtype": "Code",
+   "label": "Parent Context Requirements",
+   "options": "JSON"
+  },
+  {
+   "default": "50",
+   "description": "Members page length when loading from the server.",
+   "fieldname": "page_length",
+   "fieldtype": "Int",
+   "label": "Page Length"
+  },
+  {
+   "description": "Optional python path to hook: transform_row_before_add(parent_doc, member_doc, row_dict, config).",
+   "fieldname": "hook_path",
+   "fieldtype": "Data",
+   "label": "Per-Doctype Hook (Python Path)"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Add By Group Config",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-07 09:04:28.502726",
+ "modified_by": "Administrator",
+ "module": "Add By Group",
+ "name": "Add By Group Config",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
